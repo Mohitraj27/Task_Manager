@@ -1,0 +1,141 @@
+<div class="container">
+  <h4 class="text-center">User Signup</h4>
+
+  <form (ngSubmit)="submit()" [formGroup]="form">
+    <div class="mb-3">
+      <input
+        formControlName="name"
+        class="form-control"
+        id="inputName"
+        placeholder="Full Name"
+        required
+      />
+      <div
+        *ngIf="
+          form.get('name')?.hasError('required') && form.get('name')?.touched
+        "
+        class="text-danger"
+      >
+        Full Name is required.
+      </div>
+      <div
+        *ngIf="
+          form.get('name')?.hasError('invalidUsername') &&
+          form.get('name')?.touched
+        "
+        class="text-danger"
+      >
+        Please enter a valid Full Name.
+      </div>
+    </div>
+    <div class="mb-3">
+      <input
+        formControlName="email"
+        class="form-control"
+        id="inputEmail"
+        placeholder="User Email"
+        required
+      />
+      <div
+        *ngIf="
+          form.get('email')?.hasError('required') && form.get('email')?.touched
+        "
+        class="text-danger"
+      >
+        Email is required.
+      </div>
+      <div
+        *ngIf="
+          form.get('email')?.hasError('invalidEmail') &&
+          form.get('email')?.touched
+        "
+        class="text-danger"
+      >
+        Please provide a valid email address.
+      </div>
+      <div
+        *ngIf="form.get('email')?.hasError('emailExists')"
+        class="text-danger"
+      >
+        Email already exists. Please use a different email.
+      </div>
+    </div>
+    <div class="mb-3">
+      <input
+        formControlName="password"
+        class="form-control"
+        id="inputPassword"
+        placeholder="User Password"
+        required
+      />
+      <div
+        *ngIf="
+          form.get('password')?.errors?.['required'] &&
+          form.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Password is required.
+      </div>
+      <div
+        *ngIf="
+          form.get('password')?.errors?.['missingLowercase'] &&
+          form.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Password must contain at least one lowercase letter.
+      </div>
+      <div
+        *ngIf="
+          form.get('password')?.errors?.['missingUppercase'] &&
+          form.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Password must contain at least one uppercase letter.
+      </div>
+      <div
+        *ngIf="
+          form.get('password')?.errors?.['missingNumber'] &&
+          form.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Password must contain at least one number.
+      </div>
+      <div
+        *ngIf="
+          form.get('password')?.errors?.['missingSpecialCharacter'] &&
+          form.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Password must contain at least one special character.
+      </div>
+      <div
+        *ngIf="
+          form.get('password')?.errors?.['minLength'] &&
+          form.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Password must be at least 8 characters long.
+      </div>
+      <div
+        *ngIf="
+          form.get('password')?.errors?.['maxLength'] &&
+          form.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Password cannot be more than 12 characters long.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Signup</button>
+    <p class="text-center mt-3">
+      Already have an account?
+      <a routerLink="/login" class="custom-link">User Login</a>
+    </p>
+  </form>
+</div>

@@ -1,0 +1,81 @@
+<div class="container mt-9">
+  <div
+    *ngIf="successmsg"
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>{{ successmsg }}</strong>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="closedeleteAlert()"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <!-- Display tasks if available, otherwise show a message -->
+  <ng-container *ngIf="visibleData.length > 0; else noTasks">
+    <table class="table table-bordered" style="width: 800px">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Task Name</th>
+          <th scope="col">Task Details</th>
+          <th scope="col" style="width: 200px">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of visibleData; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ task.task_name }}</td>
+          <td>{{ task.task_details }}</td>
+          <td>
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="deleteID(task.task_id)"
+              style="width: 70px"
+            >
+              Delete
+            </button>
+            &nbsp;
+            <a
+              [routerLink]="['/create', task.task_id]"
+              class="btn btn-sm btn-success"
+              style="width: 70px"
+              >Update</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination controls with conditions -->
+    <div class="pagination mt-3" *ngIf="totalPages > 0">
+      <button
+        class="btn btn-secondary"
+        *ngIf="currentPage > 1"
+        (click)="prevPage()"
+      >
+        Previous
+      </button>
+      <span class="mx-2" *ngIf="currentPage <= totalPages"
+        >Page {{ currentPage }}</span
+      >
+      <button
+        class="btn btn-secondary"
+        *ngIf="currentPage < totalPages"
+        (click)="nextPage()"
+      >
+        Next
+      </button>
+    </div>
+  </ng-container>
+
+  <!-- No tasks message -->
+  <ng-template #noTasks>
+    <div class="no-tasks">
+      <h4>No tasks to display</h4>
+    </div>
+  </ng-template>
+</div>

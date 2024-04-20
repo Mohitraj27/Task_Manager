@@ -1,0 +1,40 @@
+/* home.component.css */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.logout-button,
+.btn-success {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 8px;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}

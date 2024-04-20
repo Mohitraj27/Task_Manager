@@ -1,0 +1,79 @@
+<div class="container">
+  <h4>User Login</h4>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <!-- Email Field -->
+    <div class="mb-3">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>User Email</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="User email"
+          required
+        />
+      </mat-form-field>
+      <div
+        *ngIf="
+          loginForm.get('email')?.hasError('required') &&
+          loginForm.get('email')?.touched
+        "
+        class="text-danger"
+      >
+        Email is required.
+      </div>
+      <div
+        *ngIf="
+          loginForm.get('email')?.hasError('invalidEmail') &&
+          loginForm.get('email')?.touched
+        "
+        class="text-danger"
+      >
+        Please provide a valid email address.
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="mb-3">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>User Password</mat-label>
+        <input
+          matInput
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="User password"
+          required
+        />
+        <span
+          matSuffix
+          (click)="togglePasswordVisibility($event)"
+          role="button"
+          tabindex="0"
+          style="cursor: pointer"
+        >
+          <mat-icon aria-label="Toggle password visibility">{{
+            showPassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </span>
+      </mat-form-field>
+      <div
+        *ngIf="
+          loginForm.get('password')?.hasError('required') &&
+          loginForm.get('password')?.touched
+        "
+        class="text-danger"
+      >
+        Password is required.
+      </div>
+    </div>
+
+    <!-- Error message section -->
+    <div *ngIf="errorMessage" class="text-danger mt-3 mb-3">
+      {{ errorMessage }}
+    </div>
+    <button type="button" class="btn btn-success" (click)="submit()">
+      Login
+    </button>
+    <p>New User? <a routerLink="/register">Sign Up</a></p>
+  </form>
+</div>

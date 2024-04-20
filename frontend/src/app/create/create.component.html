@@ -1,0 +1,123 @@
+<div class="container">
+  <div class="card">
+    <h4 class="card-header">
+      {{ getparamid ? "Update User" : "Create User" }}
+    </h4>
+
+    <!-- Error and Success Messages -->
+    <div
+      *ngIf="errormsg"
+      class="alert alert-warning alert-dismissible fade show"
+      role="alert"
+    >
+      <strong>{{ errormsg }}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        (click)="closeErrorAlert()"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <div
+      *ngIf="successmsg"
+      class="alert alert-success alert-dismissible fade show"
+      role="alert"
+    >
+      <strong>{{ successmsg }}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        (click)="closeSuccessAlert()"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <form [formGroup]="userForm">
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="inputFullName" class="form-label">Task Name</label>
+          <input
+            type="text"
+            formControlName="task_name"
+            class="form-control"
+            id="inputFullName"
+            placeholder="Enter Task Name"
+          />
+          <div
+            *ngIf="
+              userForm.get('task_name')?.hasError('required') &&
+              userForm.get('task_name')?.touched
+            "
+            class="text-danger"
+          >
+            Task Name is required.
+          </div>
+
+          <div
+            *ngIf="
+              userForm.get('task_name')?.hasError('minlength') &&
+              userForm.get('task_name')?.touched
+            "
+            class="text-danger"
+          >
+            Task Name should be at least 10 characters long.
+          </div>
+
+          <div
+            *ngIf="
+              userForm.get('task_name')?.hasError('maxlength') &&
+              userForm.get('task_name')?.touched
+            "
+            class="text-danger"
+          >
+            Task Name should not exceed 50 characters.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="inputEmail" class="form-label">Task Details</label>
+          <input
+            type="text"
+            formControlName="task_details"
+            class="form-control"
+            id="inputEmail"
+            placeholder="Enter Task Details"
+          />
+          <div
+            *ngIf="
+              userForm.get('task_details')?.hasError('required') &&
+              userForm.get('task_details')?.touched
+            "
+            class="text-danger"
+          >
+            Task Details is required.
+          </div>
+          <div
+            *ngIf="
+              userForm.get('task_details')?.hasError('minlength') &&
+              userForm.get('task_details')?.touched
+            "
+            class="text-danger"
+          >
+            Task Details should be at least 20 characters long.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="mb-3" *ngIf="!getparamid" (click)="userSubmit()">
+          <button class="btn btn-primary">Create</button>
+        </div>
+
+        <div class="mb-3">
+          <a routerLink="/home" class="btn btn-secondary">Back</a>
+        </div>
+
+        <div class="mb-3" *ngIf="getparamid" (click)="userUpdate()">
+          <button class="btn btn-dark">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

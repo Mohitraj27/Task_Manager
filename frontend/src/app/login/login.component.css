@@ -1,0 +1,61 @@
+/* Styles for User Login */
+.container {
+  max-width: 400px;
+  margin-top: 5%;
+  background-color: #ffffff; /* White container background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h4 {
+  color: #007bff; /* Bootstrap primary color */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.btn-success {
+  width: 100%;
+}
+
+/* Styles for Password Hide/Unhide */
+.input-group {
+  position: relative;
+}
+
+.input-group .btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  z-index: 2;
+  border: none;
+  background: transparent;
+}
+
+.input-group .btn i {
+  cursor: pointer;
+}
+
+/* Error Message Section */
+.text-danger {
+  color: #dc3545; /* Bootstrap danger color */
+}
+
+.mt-3 {
+  margin-top: 15px;
+}
+.mat-icon-button {
+  cursor: pointer;
+}
+.mat-icon-button:hover {
+  background-color: #f0f0f0; /* Example hover effect */
+}

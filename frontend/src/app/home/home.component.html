@@ -1,0 +1,14 @@
+<div class="home-container">
+  <div class="center-container">
+    <div class="welcome-message">
+      <p>Welcome! Explore and manage your data effortlessly.</p>
+    </div>
+    <div class="button-container">
+      <button *ngIf="isLoggedIn" (click)="logout()" class="logout-button">
+        Logout
+      </button>
+      <a routerLink="/create" class="btn btn-success">Create</a>
+    </div>
+    <app-read></app-read>
+  </div>
+</div>

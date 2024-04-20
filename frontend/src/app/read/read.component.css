@@ -1,0 +1,33 @@
+/* Add this to your global styles or component-specific styles */
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-button {
+  margin-left: auto;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.btn-success,
+.btn-danger {
+  margin-right: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+.no-tasks {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.no-tasks h4 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #6c757d;
+}
